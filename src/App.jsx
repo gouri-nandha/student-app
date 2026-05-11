@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
-import LandingPage from './components/LandingPage'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import StudentList from './components/StudentList'
@@ -8,16 +7,18 @@ import Header from './components/Header'
 import ProtectedRoute from './components/ProtectedRoute'
 import CreateStudentPage from './components/CreateStudentPage'
 import EditStudentPage from './components/EditStudentPage'
+import AiChatPage from './components/AiChatPage'
 
 export default function App() {
   return (
     <div className="sma-app">
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-
+        <Route path="/" element={<Navigate to="/students" replace />} />
+        
         <Route path="/login" element={
           <div className="sma-auth-layout"><LoginForm /></div>
         } />
+        
         <Route path="/register" element={
           <div className="sma-auth-layout"><RegisterForm /></div>
         } />
@@ -33,16 +34,28 @@ export default function App() {
           </ProtectedRoute>
         } />
 
-        
         <Route path="/students/new" element={
-          <ProtectedRoute><CreateStudentPage /></ProtectedRoute>
+          <ProtectedRoute>
+            <Header />
+            <CreateStudentPage />
+          </ProtectedRoute>
         } />
 
         <Route path="/students/:id/edit" element={
-          <ProtectedRoute><EditStudentPage /></ProtectedRoute>
+          <ProtectedRoute>
+            <Header />
+            <EditStudentPage />
+          </ProtectedRoute>
         } />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/ai" element={
+          <ProtectedRoute>
+            <Header />
+            <AiChatPage />
+          </ProtectedRoute>
+        } />
+
+        <Route path="*" element={<Navigate to="/students" replace />} />
       </Routes>
     </div>
   );

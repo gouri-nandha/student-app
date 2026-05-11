@@ -15,6 +15,8 @@ export default function Header() {
         <Link to="/students" className="sma-header-title-link">
           Student Management System
         </Link>
+        <Link to="/ai" className="sma-nav-link">AI Assistant</Link>
+
       </div>
       <nav className="sma-header-nav">
         <NavLink
