@@ -18,6 +18,8 @@ export default function LoginForm() {
       const response = await client.post('/auth/login', { username, password })
       localStorage.setItem('token', response.data.access_token)
       navigate('/students', { replace: true })
+      // replace: true — pressing Back from /students does not return to /login
+
     } catch (err) {
       if (err.response) {
         setError(err.response.data.detail || 'Login failed')

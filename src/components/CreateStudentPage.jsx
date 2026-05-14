@@ -5,11 +5,13 @@ import Header from './Header'
 
 export default function CreateStudentPage() {
   const navigate = useNavigate()
-  const [form, setForm] = useState({ name: '', age: '', email: '', city: '' })
-  const [error, setError] = useState('')
+  const [form, setForm]     = useState({ name: '', age: '', email: '', city: '' })
+  const [error, setError]   = useState('')
   const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
+    // [e.target.name] uses the input's name attribute as the key
+    // This one handler updates any field: name, age, email, or city
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
@@ -21,9 +23,9 @@ export default function CreateStudentPage() {
     try {
       await client.post('/students', {
         ...form,
-        age: Number(form.age),
+        age: Number(form.age),   // age must be a number for FastAPI's schema
       })
-      navigate('/students')
+      navigate('/students')      // go back to the list after creating
 
     } catch (err) {
       setError(err.response?.data?.detail || 'Failed to create student')

@@ -16,7 +16,7 @@ export default function Header() {
           Student Management System
         </Link>
         <Link to="/ai" className="sma-nav-link">AI Assistant</Link>
-
+        <Link to="/ai/chat" className="sma-nav-link">AI Chat</Link>
       </div>
       <nav className="sma-header-nav">
         <NavLink

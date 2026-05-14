@@ -1,5 +1,5 @@
-export default function StudentCard({ student, onDelete}) {
-  const {id, name, age, email, city = 'Unknown'} =  student
+export default function StudentCard({ student, onDelete }) {
+  const { id, name, age, email, city = 'Unknown' } = student
 
   return (
     <div className="sma-student-card">
@@ -20,7 +20,7 @@ export default function StudentCard({ student, onDelete}) {
           onClick={() => onDelete(id)}
           title="Delete student"
         >
-          DELETE
+          ✕
         </button>
       </div>
     </div>
